@@ -18,11 +18,11 @@ class ButtomBarScreen extends StatefulWidget {
 class _ButtomBarScreenState extends State<ButtomBarScreen> {
   int _selectedIndex = 0;
 
-  final List _pages = [
-    HomeScreen(),
-    CategoriesScreen(),
-    CartScreen(),
-    UserScreen(),
+  final List<Map<String, dynamic>> _pages = [
+    {'page': const HomeScreen(), 'title': 'Home Screen'},
+    {'page': const CategoriesScreen(), 'title': 'Categories Screen'},
+    {'page': const CartScreen(), 'title': 'Cart Screen'},
+    {'page': const UserScreen(), 'title': 'User Screen'},
   ];
 
   void _selectedPage(int index) {
@@ -36,7 +36,10 @@ class _ButtomBarScreenState extends State<ButtomBarScreen> {
     final themeState = Provider.of<DarkThemeProvider>(context);
     bool _isDark = themeState.getDarkTheme;
     return Scaffold(
-      body: _pages[_selectedIndex],
+      // appBar: AppBar(
+      //   title: Text(_pages[_selectedIndex]['title']),
+      // ),
+      body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: _isDark ? Colors.white10 : Colors.black,
           selectedItemColor:
